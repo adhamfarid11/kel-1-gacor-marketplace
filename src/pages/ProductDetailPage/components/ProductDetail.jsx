@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import useCartStore from "../../../store/useCartStore";
+import SuccessAlert from "../../../components/SuccessAlert";
 
 const ProductDetail = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
+    const [successMessage, setSuccessMessage] = useState(""); // State for success message
     const { addProduct } = useCartStore();
 
     const increaseQuantity = () => setQuantity(quantity + 1);
@@ -12,8 +14,9 @@ const ProductDetail = ({ product }) => {
 
     const addToCart = async () => {
         try {
-            await addProduct({ product, quantity: quantity });
-            alert("Product added successfully!");
+            await addProduct({ id: product.id, name: product.title, quantity });
+            setSuccessMessage("Product added successfully!"); // Update state
+            setTimeout(() => setSuccessMessage(""), 3000); // Hide after 3s
         } catch (error) {
             console.error("Error adding product:", error);
             alert("Failed to add product. Please try again.");
@@ -23,6 +26,10 @@ const ProductDetail = ({ product }) => {
     return (
         <div className="container mx-auto px-4 py-8 flex flex-col gap-5">
             <BreadCrumb title={product.title} />
+
+            {/* Show Success Alert */}
+            {successMessage && <SuccessAlert title={successMessage} />}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <img
                     src={product.image}
@@ -72,17 +79,18 @@ const ProductDetail = ({ product }) => {
 
 export default ProductDetail;
 
+// Breadcrumb Component with Correct JSX Syntax
 const BreadCrumb = ({ title }) => {
     return (
-        <nav class="flex" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                <li class="inline-flex items-center">
+        <nav className="flex" aria-label="Breadcrumb">
+            <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+                <li className="inline-flex items-center">
                     <a
                         href="/"
-                        class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600"
+                        className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600"
                     >
                         <svg
-                            class="w-3 h-3 me-2.5"
+                            className="w-3 h-3 me-2.5"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -94,9 +102,9 @@ const BreadCrumb = ({ title }) => {
                     </a>
                 </li>
                 <li aria-current="page">
-                    <div class="flex items-center">
+                    <div className="flex items-center">
                         <svg
-                            class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
+                            className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -104,13 +112,13 @@ const BreadCrumb = ({ title }) => {
                         >
                             <path
                                 stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
                                 d="m1 9 4-4-4-4"
                             />
                         </svg>
-                        <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2">
+                        <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2">
                             {title}
                         </span>
                     </div>
