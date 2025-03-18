@@ -12,6 +12,9 @@ const GimmickPage = () => {
                 <h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
                     Those are gimmicks only
                 </h1>
+                <h1 className="mt-4 text-5xl font-light tracking-tight text-balance text-gray-900">
+                    Go back your place aint here
+                </h1>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                     <a
                         onClick={() => navigate(-1)}
