@@ -6,14 +6,14 @@ const GimmickPage = () => {
     return (
         <main className="w-full h-[90vh] flex justify-center items-center bg-white px-6">
             <div className="text-center">
-                <p className="text-base font-semibold text-indigo-600">
-                    Shouldn't have clicked that link bro
+                <p className="text-3xl font-semibold text-indigo-600">
+                    Shouldn&apos;t have clicked that link bro
                 </p>
                 <h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
-                    Those are gimmicks only
+                    Those are gimmicks only.
                 </h1>
                 <h1 className="mt-4 text-5xl font-light tracking-tight text-balance text-gray-900">
-                    Go back your place aint here
+                    Go back, your place ain&apos;t here!
                 </h1>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                     <a

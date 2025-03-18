@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useCartStore from "../../../store/useCartStore";
 import SuccessAlert from "../../../components/SuccessAlert";
 
 const ProductDetail = ({ product }) => {
-    const [quantity, setQuantity] = useState(1);
     const [successMessage, setSuccessMessage] = useState(""); // State for success message
-    const { addProduct } = useCartStore();
+    const { addProduct, getQuantityById } = useCartStore();
+    const [quantity, setQuantity] = useState();
+
+    useEffect(() => {
+        setQuantity(getQuantityById(product?.id));
+    }, [product]);
 
     const increaseQuantity = () => setQuantity(quantity + 1);
     const decreaseQuantity = () => {
@@ -14,7 +18,7 @@ const ProductDetail = ({ product }) => {
 
     const addToCart = async () => {
         try {
-            await addProduct({ id: product.id, name: product.title, quantity });
+            await addProduct({ product, quantity }, quantity);
             setSuccessMessage("Product added successfully!"); // Update state
             setTimeout(() => setSuccessMessage(""), 3000); // Hide after 3s
         } catch (error) {
