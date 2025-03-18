@@ -54,7 +54,7 @@ const CheckoutPage = () => {
           </select>
         </div>
         <button type="submit" style={{ backgroundColor: '#4CAF50', color: 'white', padding: '10px 15px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-          Complete Checkout
+          Complete Checkout & Pay
         </button>
       </form>
     </div>
