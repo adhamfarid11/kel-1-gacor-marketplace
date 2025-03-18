@@ -1,54 +1,46 @@
-import { create } from "zustand";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "@/store/useAuthStore";
 
-const useLoginStore = create((set) => ({
-  email: "",
-  password: "",
-  setEmail: (email) => set({ email }),
-  setPassword: (password) => set({ password }),
-}));
+const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = useAuthStore();
+  const navigate = useNavigate();
 
-export default function LoginPage() {
-  const { email, password, setEmail, setPassword } = useLoginStore();
-
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    console.log("Logging in with: ", { email, password });
+
+    // Simpan data user yang login tanpa pembatasan email tertentu
+    const userData = { email, name: email };
+    login(userData);
+    navigate("/");
   };
 
   return (
-    <div className="flex justify-center items-center w-full">
-      <div className="w-96 shadow-lg p-6 rounded-xl bg-white">
-        <h2 className="text-xl font-bold mb-4 text-center">Login</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full mt-1 p-2 border rounded-md"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full mt-1 p-2 border rounded-md"
-              required
-            />
-          </div>
+    <div className="flex items-center justify-center h-screen w-screen">
+      <div className="bg-white p-6 rounded shadow-md w-96">
+        <h2 className="text-xl mb-4 text-center">Login</h2>
+        <form onSubmit={handleLogin} className="space-y-4">
+          <input
+            type="email"
+            placeholder="Email"
+            className="border p-2 w-full"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="border p-2 w-full"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
           <button
             type="submit"
-            className="w-full p-2 bg-pink-500 text-white rounded-md"
+            className="bg-pink-500 text-white font-semibold p-2 w-full"
           >
             Login
           </button>
@@ -56,4 +48,6 @@ export default function LoginPage() {
       </div>
     </div>
   );
-}
+};
+
+export default LoginPage;
