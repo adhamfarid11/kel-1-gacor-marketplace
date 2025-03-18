@@ -5,11 +5,11 @@ const CardProduct = ({ id, title, imageUrl, description, price, rating }) => {
     const navigate = useNavigate();
 
     return (
-        <div
-            class="w-full bg-white border border-gray-50 rounded-2xl shadow-md flex flex-col overflow-hidden"
-            onClick={() => navigate(`/product/${id}`)}
-        >
-            <a class="w-full">
+        <div class="w-full bg-white border border-gray-50 rounded-2xl shadow-md flex flex-col overflow-hidden">
+            <a
+                class="w-full cursor-pointer"
+                onClick={() => navigate(`/product/${id}`)}
+            >
                 <img
                     class="h-[200px] w-full object-cover rounded-t-xl bg-white"
                     src={imageUrl}
@@ -17,7 +17,10 @@ const CardProduct = ({ id, title, imageUrl, description, price, rating }) => {
                 />
             </a>
             <div class="h-[180px] p-4 w-full bg-white flex flex-col justify-between">
-                <div class="flex flex-col">
+                <div
+                    class="flex flex-col cursor-pointer"
+                    onClick={() => navigate(`/product/${id}`)}
+                >
                     <a>
                         <h5 class="mb-1 text-sm font-medium tracking-tight text-black line-clamp-2">
                             {title}
@@ -27,7 +30,7 @@ const CardProduct = ({ id, title, imageUrl, description, price, rating }) => {
                         {description}
                     </p>
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 ">
                     <p class="text-m font-bold text-[oklch(0.712_0.194_13.428)]">
                         ${price}
                     </p>
@@ -45,9 +48,12 @@ const CardProduct = ({ id, title, imageUrl, description, price, rating }) => {
                             {rating.rate}
                         </p>
                         <span class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"></span>
-                        <a class="text-xs font-medium text-gray-600 underline hover:no-underline">
+                        <div
+                            onClick={() => navigate("/gimmick")}
+                            class="text-xs font-medium text-gray-600 underline hover:no-underline cursor-pointer"
+                        >
                             {rating.count} reviews
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
