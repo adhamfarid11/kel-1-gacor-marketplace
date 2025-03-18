@@ -8,7 +8,7 @@ function App() {
     return (
         <>
             <Navbar />
-            <div class="mt-16 p-4">
+            <div class="mt-16 max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="*" element={<NotFoundPage />} />
