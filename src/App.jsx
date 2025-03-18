@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import HomePage from "@pages/HomePage";
 import NotFoundPage from "@pages/ErrorPage/NotFoundPage";
 import "./App.css";
@@ -20,8 +20,14 @@ function App() {
       <Navbar key={authStatus} />
       <div className="mt-16 max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/"
+            element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/login"
+            element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
