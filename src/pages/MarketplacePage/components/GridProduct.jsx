@@ -18,6 +18,7 @@ const GridProduct = () => {
             {products.map((product) => (
                 <CardProduct
                     key={product.id}
+                    id={product.id}
                     title={product.title}
                     imageUrl={product.image}
                     description={product.description}
