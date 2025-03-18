@@ -9,9 +9,12 @@ const GridProduct = () => {
         <div class="grid grid-cols-5 gap-4">
             {products.map((product) => (
                 <CardProduct
+                    key={product.id}
                     title={product.title}
                     imageUrl={product.image}
                     description={product.description}
+                    rating={product.rating}
+                    price={product.price}
                 />
             ))}
         </div>

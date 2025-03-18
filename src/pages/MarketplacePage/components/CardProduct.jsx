@@ -29,7 +29,7 @@ const CardProduct = ({ id, title, imageUrl, description, price, rating }) => {
                 </div>
                 <div className="flex flex-col gap-2">
                     <p class="text-m font-bold text-[oklch(0.712_0.194_13.428)]">
-                        Rp{price}
+                        ${price}
                     </p>
                     <div class="flex items-center">
                         <svg
