@@ -42,7 +42,10 @@ function App() {
                             )
                         }
                     />
-                    <Route path="/:id" element={<ProductDetailPage />} />
+                    <Route
+                        path="/product/:id"
+                        element={<ProductDetailPage />}
+                    />
                     <Route path="*" element={<NotFoundPage />} />
                     <Route path="/gimmick" element={<GimmickPage />} />
                 </Routes>
