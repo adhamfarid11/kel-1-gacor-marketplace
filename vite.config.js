@@ -10,6 +10,7 @@ export default defineConfig({
             "@": path.resolve(__dirname, "./src"), // Base alias for src
             "@pages": path.resolve(__dirname, "./src/pages"), // Alias for pages folder
             "@components": path.resolve(__dirname, "./src/components"), // Alias for components (if exists)
+            "@hooks": path.resolve(__dirname, "./src/hooks"), // Alias for components (if exists)
         },
     },
 });
