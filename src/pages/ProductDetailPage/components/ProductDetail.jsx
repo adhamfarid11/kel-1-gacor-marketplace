@@ -1,15 +1,23 @@
 import React, { useState } from "react";
+import useCartStore from "../../../store/useCartStore";
 
 const ProductDetail = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
+    const { addProduct } = useCartStore();
 
     const increaseQuantity = () => setQuantity(quantity + 1);
     const decreaseQuantity = () => {
         if (quantity > 1) setQuantity(quantity - 1);
     };
 
-    const addToCart = () => {
-        alert(`Added ${quantity} items to cart!`);
+    const addToCart = async () => {
+        try {
+            await addProduct({ product, quantity: quantity });
+            alert("Product added successfully!");
+        } catch (error) {
+            console.error("Error adding product:", error);
+            alert("Failed to add product. Please try again.");
+        }
     };
 
     return (
