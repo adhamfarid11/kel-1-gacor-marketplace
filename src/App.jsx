@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import HomePage from "@pages/HomePage";
 import NotFoundPage from "@pages/ErrorPage/NotFoundPage";
 import GimmickPage from "@pages/ErrorPage/GimmickPage";
 import MarketplacePage from "@pages/MarketplacePage";
+import ProductDetailPage from "@pages/ProductDetailPage";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import LoginPage from "./pages/LoginPage";
@@ -42,6 +42,7 @@ function App() {
                             )
                         }
                     />
+                    <Route path="/:id" element={<ProductDetailPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                     <Route path="/gimmick" element={<GimmickPage />} />
                 </Routes>
