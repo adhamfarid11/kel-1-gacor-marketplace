@@ -1,9 +1,11 @@
 import { useAuthStore } from "@/store/useAuthStore";
 import { useNavigate } from "react-router-dom";
+import useCartStore from "../store/useCartStore";
 
 const Navbar = () => {
     const { user, isAuthenticated, logout } = useAuthStore();
     const navigate = useNavigate();
+    const { totalQuantity } = useCartStore();
 
     const handleLogout = () => {
         logout();
@@ -57,7 +59,7 @@ const Navbar = () => {
                     <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-200 rounded-lg bg-pink-500 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-pink-500 bg-pink-700 md:bg-pink-700 border-pink-800">
                         <li>
                             <a
-                                href="#"
+                                href="/"
                                 class="block py-2 px-3 text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent"
                             >
                                 Marketplace
@@ -65,15 +67,18 @@ const Navbar = () => {
                         </li>
                         <li>
                             <a
-                                href="#"
-                                class="block py-2 px-3 text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent"
+                                href="/cart"
+                                class="block py-2 px-3 text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent flex gap-3"
                             >
                                 Cart
+                                <span class="bg-indigo-50 text-indigo-800 text-xs font-semibold px-2.5 pt-1 rounded-full ">
+                                    {totalQuantity()}
+                                </span>
                             </a>
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href="/checkout"
                                 class="block py-2 px-3 text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent"
                             >
                                 Checkout

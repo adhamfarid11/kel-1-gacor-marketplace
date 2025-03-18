@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware";
 // Create the store with persistence
 const useCartStore = create(
     persist(
-        (set) => ({
+        (set, get) => ({
             products: [],
             addProduct: (product) =>
                 new Promise((resolve, reject) => {
@@ -17,6 +17,11 @@ const useCartStore = create(
                         reject(error);
                     }
                 }),
+            totalQuantity: () =>
+                get().products.reduce(
+                    (total, product) => total + product.quantity,
+                    0
+                ),
             removeProduct: (id) =>
                 set((state) => ({
                     products: state.products.filter((p) => p.id !== id),
@@ -24,7 +29,7 @@ const useCartStore = create(
             clearProducts: () => set({ products: [] }),
         }),
         {
-            name: "product-storage", // Key in localStorage
+            name: "cart-storage", // Key in localStorage
         }
     )
 );
