@@ -3,6 +3,7 @@ import MarketplacePage from "@pages/MarketplacePage";
 import NotFoundPage from "@pages/ErrorPage/NotFoundPage";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import GimmickPage from "./pages/ErrorPage/GimmickPage";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<MarketplacePage />} />
                     <Route path="*" element={<NotFoundPage />} />
+                    <Route path="/gimmick" element={<GimmickPage />} />
                 </Routes>
             </div>
         </>
