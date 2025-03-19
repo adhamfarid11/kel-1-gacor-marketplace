@@ -5,6 +5,7 @@ import GimmickPage from "@pages/ErrorPage/GimmickPage";
 import MarketplacePage from "@pages/MarketplacePage";
 import ProductDetailPage from "@pages/ProductDetailPage";
 import CartPage from "@pages/CartPage/CartPage";
+import CheckoutPage from "@pages/CheckoutPage";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import LoginPage from "./pages/LoginPage";
@@ -50,6 +51,7 @@ function App() {
                     <Route path="*" element={<NotFoundPage />} />
                     <Route path="/gimmick" element={<GimmickPage />} />
                     <Route path="/cart" element={<CartPage />} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
                 </Routes>
             </div>
         </>
