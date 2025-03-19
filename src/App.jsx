@@ -10,6 +10,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import LoginPage from "./pages/LoginPage";
 import { useAuthStore } from "@/store/useAuthStore";
+import CheckedOutPage from "./pages/CheckedOutPage/CheckedOutPage";
 
 function App() {
     const { isAuthenticated } = useAuthStore();
@@ -52,6 +53,7 @@ function App() {
                     <Route path="/gimmick" element={<GimmickPage />} />
                     <Route path="/cart" element={<CartPage />} />
                     <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/checked-out" element={<CheckedOutPage />} />
                 </Routes>
             </div>
         </>
