@@ -13,7 +13,7 @@ const index = () => {
         setTimeout(() => {
             setCheckoutLoading(false);
             clearProducts();
-            navigate("/");
+            navigate("/checked-out");
         }, 3000);
     };
 
